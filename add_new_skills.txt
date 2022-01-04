@@ -1,0 +1,79 @@
+# Custom Entity Lookup Built-in skill, https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-custom-entity-lookup
+
+#### add field to Index Definition #####
+{
+    "name": "features",
+    "type": "Collection(Edm.String)",
+    "searchable": true,
+    "filterable": true,
+    "retrievable": true,
+    "sortable": false,
+    "facetable": true,
+    "key": false,
+    "indexAnalyzer": null,
+    "searchAnalyzer": null,
+    "analyzer": "standard.lucene",
+    "normalizer": null,
+    "synonymMaps": []
+}
+
+
+##### Indexer definition outputFieldMappings ####
+{
+    "sourceFieldName": "/document/merged_content/features/*/name",
+    "targetFieldName": "features",
+    "mappingFunction": null
+},
+
+####### add top10words field to index definition ##########
+{
+    "name": "top10words",
+    "type": "Collection(Edm.String)",
+    "searchable": true,
+    "filterable": true,
+    "retrievable": true,
+    "sortable": false,
+    "facetable": true,
+    "key": false,
+    "indexAnalyzer": null,
+    "searchAnalyzer": null,
+    "analyzer": "en.microsoft",
+    "normalizer": null,
+    "synonymMaps": []
+}
+
+##### add output field mapping for top10words ####
+{
+    "sourceFieldName": "/document/top10words",
+    "targetFieldName": "top10words",
+    "mappingFunction": null
+},
+
+
+##### Add synonymMaps to field definition ####
+{
+            "name": "content",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false,
+            "indexAnalyzer": null,
+            "searchAnalyzer": null,
+            "analyzer": "standard.lucene",
+            "normalizer": null,
+            "synonymMaps": [
+                "geo-synonyms"
+            ]
+        },
+
+###############  Add suggester ###################
+{
+    "name": "sg",
+    "searchMode": "analyzingInfixMatching",
+    "sourceFields": [
+        "locations"
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+    "name": "top10words",
+    "description": "Extract Top 10 Words Skill",
+    "context": "/document",
+    "uri": "XXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "httpMethod": "POST",
+    "timeout": "PT1M30S",
+    "batchSize": 1,
+    "degreeOfParallelism": null,
+    "inputs": [
+        {
+            "name": "text",
+            "source": "/document/merged_content",
+            "sourceContext": null,
+            "inputs": []
+        }
+    ],
+    "outputs": [
+        {
+            "name": "top10words",
+            "targetName": "top10words"
+        }
+    ],
+    "httpHeaders": {}
+}

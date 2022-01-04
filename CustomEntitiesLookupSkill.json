@@ -1,0 +1,46 @@
+{
+  "@odata.type": "#Microsoft.Skills.Text.CustomEntityLookupSkill",
+  "defaultLanguageCode": "en",
+  "entitiesDefinitionUri": "",
+  "inlineEntitiesDefinition": [
+  {
+      "name" : "breakfast"
+  },
+  {
+      "name" : "city"
+  },
+  {
+      "name" : "clean"
+  },
+  {
+      "name" : "restaurant"
+  },
+  {
+      "name" : "budget"
+  },
+  {
+      "name" : "luxury"
+  },
+  {
+      "name" : "free parking"
+  }
+  ],
+  "globalDefaultCaseSensitive": false,
+  "globalDefaultAccentSensitive": false,
+  "globalDefaultFuzzyEditDistance": 0,
+  "name": "#7",
+  "description": "",
+  "context": "/document/merged_content",
+  "inputs": [
+    {
+      "name": "text",
+      "source": "/document/merged_content"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "entities",
+      "targetName": "features"
+    }
+  ]
+}
